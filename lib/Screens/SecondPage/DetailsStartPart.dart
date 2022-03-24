@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:better_player/better_player.dart';
 import 'package:drutoit/Pages/DetailsOfCourse.dart';
 import 'package:drutoit/Screens/SecondPage/ShowVideo.dart';
-import 'package:drutoit/Screens/SecondPage/videos.dart';
 import 'package:drutoit/Widgets/OnHovarMethod.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
