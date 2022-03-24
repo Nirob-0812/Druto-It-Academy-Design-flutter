@@ -116,7 +116,7 @@ class MobileAppBar extends StatelessWidget {
               children: [
                 OnHovarMethod(
                   builder: (bool hoverProperty) {
-                    final color = hoverProperty ? Colors.indigo : null;
+                    final color = hoverProperty ? Colors.deepOrange : null;
                     final bold = hoverProperty ? FontWeight.bold : null;
                     return Text( "Home",  style: TextStyle(fontSize: 15, color: color,fontWeight: bold),
                     );
@@ -125,7 +125,7 @@ class MobileAppBar extends StatelessWidget {
                 SizedBox(width: 15,),
                 OnHovarMethod(
                   builder: (bool hoverProperty) {
-                    final color = hoverProperty ? Colors.indigo : null;
+                    final color = hoverProperty ? Colors.deepOrange : null;
                     final bold = hoverProperty ? FontWeight.bold : null;
                     return Text( "Courses",  style: TextStyle(fontSize: 15, color: color,fontWeight: bold),
                     );
@@ -134,7 +134,7 @@ class MobileAppBar extends StatelessWidget {
                 SizedBox(width: 15,),
                 OnHovarMethod(
                   builder: (bool hoverProperty) {
-                    final color = hoverProperty ? Colors.indigo : null;
+                    final color = hoverProperty ? Colors.deepOrange : null;
                     final bold = hoverProperty ? FontWeight.bold : null;
                     return Text( "Blog",  style: TextStyle(fontSize: 15, color: color,fontWeight: bold),
                     );
@@ -143,7 +143,7 @@ class MobileAppBar extends StatelessWidget {
                 SizedBox(width: 15,),
                 OnHovarMethod(
                   builder: (bool hoverProperty) {
-                    final color = hoverProperty ? Colors.indigo : null;
+                    final color = hoverProperty ? Colors.deepOrange : null;
                     final bold = hoverProperty ? FontWeight.bold : null;
                     return Text( "Others",  style: TextStyle(fontSize: 15, color: color,fontWeight: bold),
                     );

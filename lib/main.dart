@@ -1,5 +1,9 @@
+import 'package:drutoit/Pages/DetailsOfCourse.dart';
 import 'package:drutoit/Pages/HomePage.dart';
+import 'package:drutoit/Screens/SecondPage/videos.dart';
 import 'package:flutter/material.dart';
+
+import 'Screens/SecondPage/ShowVideo.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,6 +25,8 @@ class MyApp extends StatelessWidget {
       initialRoute: HomePage.route,
       routes: {
         HomePage.route:(context)=>HomePage(),
+        DetailsOfCourse.route:(context)=>DetailsOfCourse(),
+        VideoPlay.route:(context)=>VideoPlay(),
       },
     );
   }

@@ -4,7 +4,7 @@ Widget BottomListView(List<dynamic> _list, double widthofRow){
   return Container(
     height: 240,
     width: widthofRow,
-    child: ListView.builder( itemCount: _list.length,
+    child: ListView.builder(itemCount: _list.length,
         scrollDirection: Axis.vertical,
         itemBuilder: (contex,index){
           return Padding(

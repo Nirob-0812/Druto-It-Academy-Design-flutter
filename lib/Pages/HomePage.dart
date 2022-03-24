@@ -1,10 +1,11 @@
-import 'package:drutoit/Screens/AppBar.dart';
-import 'package:drutoit/Screens/BottomContent.dart';
-import 'package:drutoit/Screens/Conclution.dart';
-import 'package:drutoit/Screens/FirstContent.dart';
-import 'package:drutoit/Screens/FirstList.dart';
-import 'package:drutoit/Screens/SecondList.dart';
+import 'package:drutoit/Screens/FirstPage/AppBar.dart';
+import 'package:drutoit/Screens/FirstPage/BottomContent.dart';
+import 'package:drutoit/Screens/FirstPage/Conclution.dart';
+import 'package:drutoit/Screens/FirstPage/FirstContent.dart';
+import 'package:drutoit/Screens/FirstPage/FirstList.dart';
 import 'package:flutter/material.dart';
+
+import '../Screens/FirstPage/SecondList.dart';
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
   static const route="HomePage";
