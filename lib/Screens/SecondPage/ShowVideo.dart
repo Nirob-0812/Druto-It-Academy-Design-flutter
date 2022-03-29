@@ -1,5 +1,7 @@
 import 'dart:html';
+import 'package:drutoit/Modals/VideoModal.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:video_player/video_player.dart';
 class ShowVideo extends StatefulWidget {
   @override
@@ -7,18 +9,21 @@ class ShowVideo extends StatefulWidget {
 }
 
 class _ShowVideoState extends State<ShowVideo> {
-  List video=[
-    "assets/videos/bee.mp4",
-    "assets/videos/vocal.mp4",
-    "assets/videos/bee.mp4",
-    "assets/videos/vocal.mp4",
-    "assets/videos/bee.mp4",
-    "assets/videos/vocal.mp4",
-  ];
-  late final VideoPlayerController _controller;
   bool _playVideo=false;
+  VideoPlayerController _controller=VideoPlayerController.asset("assets/videos/bee.mp4");
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _controller..initialize().then((_){
+      setState(() {
+        _controller.play();
+      });
+    });
+  }
   @override
   Widget build(BuildContext context) {
+    final itemData=Provider.of<videos>(context);
     return Dialog(
       child: Container(
         height: 1000,
@@ -35,23 +40,23 @@ class _ShowVideoState extends State<ShowVideo> {
                 Text("The Complete Dart Programming Course",
                   style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 25),),
                 SizedBox(height: 20,),
-                _playVideo ? viewVideo(context): Text("fdkfjk"),
+                 viewVideo(context),
                 Text("Free Sample Video",
                   style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 18),),
                 Container(
                   height: 1000,
                   width: 600,
                   child: ListView.builder(
-                      itemCount: video.length,
+                      itemCount: itemData.videosdata.length,
                       itemBuilder: (context, index) {
                         return InkWell(
                           onTap: (){
                             print(index.toString());
-                            _ontapVideo(index);
-                            setState(() {
-                              if(_playVideo==false)
-                                _playVideo=true;
-                            });
+                            _ontapVideo(index, itemData.videosdata[index].video);
+                            // setState(() {
+                            //   if(_playVideo==false)
+                            //     _playVideo=true;
+                            //   });
                           },
                           child: ListTile(
                             leading: Image.asset("assets/images/dart.png",height: 50,width: 50,),
@@ -69,10 +74,8 @@ class _ShowVideoState extends State<ShowVideo> {
       ),
     );
   }
-  _ontapVideo(int indx){
-    _controller=VideoPlayerController.asset(video[indx]);
-    setState(() {
-    });
+  _ontapVideo(int indx , String video){
+    _controller=VideoPlayerController.asset(video);
     _controller..initialize().then((_){
        setState(() {
          _controller.play();
@@ -85,12 +88,10 @@ class _ShowVideoState extends State<ShowVideo> {
         return AspectRatio(aspectRatio: 16/9,
           child: VideoPlayer(_controller),);
       }
-    else return CircularProgressIndicator();
+    else return Center(child: CircularProgressIndicator());
   }
-
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     _controller.dispose();
   }
