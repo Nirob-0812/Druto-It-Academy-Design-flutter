@@ -21,13 +21,14 @@ class showInRow extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 80,top: 30),
       child: Container(
+        alignment: Alignment.topLeft,
         height: 160,
-        width: MediaQuery.of(context).size.width*0.75,
+        width: 700,
         decoration: BoxDecoration(
             border: Border.all(color: Colors.grey.shade800)
         ),
         child: Padding(
-          padding: const EdgeInsets.only(left: 20,top: 20,right: 60),
+          padding: const EdgeInsets.only(left: 20,top: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -74,10 +75,10 @@ class showInColumn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 20,top: 40),
+      padding: const EdgeInsets.only(left: 80,top: 30),
       child: Container(
-        height: 180,
-        width: MediaQuery.of(context).size.width*0.9,
+        height: 170,
+        width: MediaQuery.of(context).size.width*0.80,
         decoration: BoxDecoration(
             border: Border.all(color: Colors.grey.shade800)
         ),

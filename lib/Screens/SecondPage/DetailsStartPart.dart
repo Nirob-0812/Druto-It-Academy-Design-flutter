@@ -238,7 +238,7 @@ class VideoSection extends StatelessWidget {
                 backgroundColor: Colors.white,
                 onPressed: () {
                     showDialog(context: (context), builder: (context){
-                      return ShowVideo();
+                      return ShowVideo(videoindex: 0, video: "assets/videos/natural.mp4",);
                     });
                 },
                 child: Icon(Icons.play_arrow, color: Colors.black, size: 40,),

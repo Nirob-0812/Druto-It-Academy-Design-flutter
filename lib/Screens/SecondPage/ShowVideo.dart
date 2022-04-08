@@ -7,35 +7,42 @@ import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:video_player/video_player.dart';
+
 class ShowVideo extends StatefulWidget {
+  final int videoindex;
+  final String video;
   @override
   State<ShowVideo> createState() => _ShowVideoState();
+   ShowVideo({required this.videoindex, required this.video});
 }
-
 class _ShowVideoState extends State<ShowVideo> {
-  late bool _playVideo=false;
-  late int tapped;
+  // late int _index;
+  // late String _video;
+  late bool _pressed=false;
+  late int tapped=0;
   double volume=0.5;
-  VideoPlayerController _controller=VideoPlayerController.asset("assets/videos/bee.mp4");
+  late VideoPlayerController _controller=VideoPlayerController.asset("assets/videos/natural.mp4");
   late Duration videoposition=_controller.value.position;
   late Duration videolength;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    tapped=0;
-    _controller..initialize().then((_){
+    _controller..initialize().then((value) {
       setState(() {
         _controller.play();
       });
+      _controller.addListener(() {setState(() {
+        videoposition=_controller.value.position;
+      });});
     });
-    _controller.addListener(()=>setState(() {
-      videoposition=_controller.value.position;
-    }));
   }
   @override
   Widget build(BuildContext context) {
     final itemData=Provider.of<Videos>(context);
+    // _index=widget.videoindex;
+    // _video=widget.video;
+    //if(!_pressed)_ontapVideo(_video);
     return Dialog(
       child: Container(
         height: 1000,
@@ -52,7 +59,8 @@ class _ShowVideoState extends State<ShowVideo> {
                 Text("The Complete Dart Programming Course",
                   style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 25),),
                 SizedBox(height: 20,),
-                 viewVideo(context),
+                viewVideo(context),
+                //if(_pressed)
                 Container(
                   height: 50,
                   width: 600,
@@ -79,7 +87,6 @@ class _ShowVideoState extends State<ShowVideo> {
                           }, icon: Icon(Icons.skip_next)),
                           SizedBox(width: 10,),
                           Text("${Convert_duration(videoposition)} / ${Convert_duration(_controller.value.duration)}"),
-
                         ],
                       ),
                       Row(children: [
@@ -96,7 +103,10 @@ class _ShowVideoState extends State<ShowVideo> {
                             }),
                         IconButton(onPressed: (){}, icon: Icon(FontAwesomeIcons.closedCaptioning,size: 20,)),
                         IconButton(onPressed: (){}, icon: Icon(Icons.settings,size: 20,)),
-                        IconButton(onPressed: (){}, icon: Icon(FontAwesomeIcons.upRightAndDownLeftFromCenter,size: 17,)),
+                        IconButton(onPressed: (){
+                          setState(() {
+                          });
+                        }, icon: Icon(FontAwesomeIcons.upRightAndDownLeftFromCenter,size: 17,)),
 
                       ],)
                     ],
@@ -112,11 +122,12 @@ class _ShowVideoState extends State<ShowVideo> {
                       itemCount: itemData.videosdata.length,
                       itemBuilder: (context, index) {
                         return Padding(
-                          padding: const EdgeInsets.all(3.0),
+                          padding: const EdgeInsets.all(3),
                           child: Container(
                             color: tapped==index ? Colors.grey.shade400: null,
                             child: ListTile(
                               onTap: (){
+                                _pressed=true;
                                 tapped=index;
                                 // print(index.toString());
                                 _ontapVideo(itemData.videosdata[index].video);
@@ -163,7 +174,8 @@ class _ShowVideoState extends State<ShowVideo> {
           ],
         );
       }
-    else return Center(child: CircularProgressIndicator());
+    else return AspectRatio(aspectRatio: 16/9,
+    child: Center(child: CircularProgressIndicator()));
   }
 
   @override

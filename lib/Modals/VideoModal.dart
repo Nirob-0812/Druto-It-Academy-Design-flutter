@@ -5,9 +5,9 @@ class Videos with ChangeNotifier{
 
   List<Data> videosdata=[
     Data(video: "assets/videos/bee.mp4", title: "Dart", duration: 0.4),
-    Data(video: "assets/videos/vocal.mp4", title: "flutter", duration: 2.19),
+    Data(video: "assets/videos/natural.mp4", title: "flutter", duration: 2.19),
     Data(video: "assets/videos/bee.mp4", title: "Dart", duration: 0.4),
-    Data(video: "assets/videos/vocal.mp4", title: "flutter", duration: 2.19),
+    Data(video: "assets/videos/natural.mp4", title: "flutter", duration: 2.19),
   ];
   List<Data> get video => videosdata;
   // void tapped(bool playVideo)

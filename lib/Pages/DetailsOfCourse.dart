@@ -1,5 +1,6 @@
 import 'package:drutoit/Screens/FirstPage/AppBar.dart';
 import 'package:drutoit/Screens/FirstPage/BottomContent.dart';
+import 'package:drutoit/Screens/FirstPage/SecondList.dart';
 import 'package:drutoit/Screens/SecondPage/CourseOverView.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -25,7 +26,8 @@ class DetailsOfCourse extends StatelessWidget {
                 height: 20,
               ),
               CourseOverView(),
-              SizedBox(height: 1000,),
+              SizedBox(height: 200,),
+              SecondList(),
               Container(
                 width: double.infinity,
                 color: Colors.black87,
